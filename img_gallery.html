@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.2.0/magnific-popup.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="gallery">
+        <span id="element"></span>
+        <ul class="controls">
+        <li class="buttons active" data-filter="all">All</li>
+        <li class="buttons" data-filter="ice-cream">Ice-Creams</li>
+        <li class="buttons" data-filter="choco">Chocolates</li>
+        <li class="buttons" data-filter="cake">Cakes</li>
+        <li class="buttons" data-filter="juice">Juice</li>
+        <li class="buttons" data-filter="sand">Sandwiches</li>
+        </ul>      
+        <div class="image-container">
+            
+            <div class="image-container-item ice-cream">
+            <a href="ice1.jpeg" class="image">
+                <img src="ice1.jpeg" alt="ice-1">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+            <div class="image-container-item ice-cream">
+            <a href="ice2.jpeg" class="image">
+                <img src="ice2.jpeg" alt="ice-2">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+            <div class="image-container-item ice-cream">
+            <a href="ice3.jpeg" class="image">
+                <img src="ice3.jpeg" alt="ice-3">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+
+            <div class="image-container-item choco">
+            <a href="ch2.jpeg" class="image">
+                <img src="ch2.jpeg" alt="ch-1">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+            <div class="image-container-item choco">
+            <a href="ch3.jpeg" class="image">
+                <img src="ch3.jpeg" alt="ch-2">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+
+            <div class="image-container-item cake">
+            <a href="c1.jpeg" class="image">
+                <img src="c1.jpeg" alt="cake-1">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+            <div class="image-container-item cake">
+            <a href="c2.jpeg" class="image">
+                <img src="c2.jpeg" alt="cake-2">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+            <div class="image-container-item cake">
+            <a href="c3.jpeg" class="image">
+                <img src="c3.jpeg" alt="cake-3">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+            <div class="image-container-item cake">
+            <a href="c4.jpeg" class="image">
+                <img src="c4.jpeg" alt="cake-4">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+            <div class="image-container-item cake">
+            <a href="c5.jpeg" class="image">
+                <img src="c5.jpeg" alt="cake-5">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+
+            <div class="image-container-item juice">
+            <a href="j1.jpeg" class="image">
+                <img src="j1.jpeg" alt="juice-1">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+            <div class="image-container-item juice">
+            <a href="j2.jpeg" class="image">
+                <img src="j2.jpeg" alt="juice-2">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+            <div class="image-container-item juice">
+            <a href="j3.jpeg" class="image">
+                <img src="j3.jpeg" alt="juice-3">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+
+            <div class="image-container-item sand">
+            <a href="s1.jpg" class="image">
+                <img src="s1.jpg" alt="sand-1">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+            <div class="image-container-item sand">
+            <a href="s2.jpeg" class="image">
+                <img src="s2.jpeg" alt="sand-2">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+            <div class="image-container-item sand">
+            <a href="s3.jpeg" class="image">
+                <img src="s3.jpeg" alt="sand-3">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+            <div class="image-container-item sand">
+            <a href="s4.jpeg" class="image">
+                <img src="s4.jpeg" alt="sand-4">
+            </a>
+            <button class="remove-image">Delete-img</button></div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+            $('#file-input').change(function(event) {
+                var file = event.target.files[0]; 
+                if (file) {
+                    var reader = new FileReader(); 
+                reader.onload = function(e) {
+                    var imagePreview = $('#image-preview-container .image');
+                    imagePreview.attr('src', e.target.result); 
+                };
+                    reader.readAsDataURL(file); 
+                }
+            });
+        </script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed('#element', {
+            strings: ['Image-Gallery', 'Photo-Gallery', 'Filtered-Gallery', 'Image-Viewer'],
+            typeSpeed: 50,
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.buttons').click(function(event){
+                event.preventDefault();
+                
+                $(this).parent().addClass('active').siblings().removeClass('active');
+                
+                var filter = $(this).attr('data-filter');
+                
+                if (filter == 'all') {
+                    $('.image-container-item').show(400);
+                } else {
+                    
+                    $('.image-container-item').not('.' + filter).hide(200);
+                    
+                    $('.image-container-item.' + filter).show(600);
+                }
+            });
+    
+            $('.gallery').magnificPopup({
+                delegate: 'a',
+                type: 'image',
+                gallery: {
+                    enabled: true,
+                    navigateByImgClick: true, 
+                    preload: [0,1],
+                }
+            });
+    
+    $('.remove-image').on('click', function() {
+    $(this).closest('.image-container-item').remove();
+    });
+    });
+    </script>
+</body>
+</html>
